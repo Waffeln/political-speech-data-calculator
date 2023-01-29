@@ -44,10 +44,7 @@ const prepareDataByYear = (data: PrepareDataByYearType[][]): PrepareDataByYearTy
 			});
 		});
 	});
-
 	console.log(result);
-
-
 	return result;
 };
 
