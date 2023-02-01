@@ -6,7 +6,7 @@ interface PoliticianCounter {
 
 const politicianKeyName = "Speaker";
 
-const getPoliticianWithMostSpeechesByKey = (data, keyName: string, keyValue: string | number) => {
+const getPoliticianWithMostSpeechesByKey = (data, keyName: string, keyValue: string | number): string | null => {
 	const politicianCounter: PoliticianCounter = {};
 
 	data.forEach((urlElement) => {
@@ -28,7 +28,7 @@ const getPoliticianWithMostSpeechesByKey = (data, keyName: string, keyValue: str
 	return result[0];
 };
 
-const getPoliticianWithLowestKeyValue = (data, keyName: string) => {
+const getPoliticianWithLowestKeyValue = (data, keyName: string): string | null => {
 	const politicianCounter: PoliticianCounter = {};
 	data.forEach((urlElement) => {
 		urlElement.forEach((el) => {
