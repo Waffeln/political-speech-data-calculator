@@ -6,14 +6,14 @@ interface PoliticianCounter {
 
 const politicianKeyName = "Speaker";
 
-const getPoliticianWithMostSpeechesByKey = (data, keyName: string, keyValue: string | number): string | null => {
+const getPoliticianWithMostSpeechesByKey = (data, keyName: string, expectedValue: string | number): string | null => {
 	const politicianCounter: PoliticianCounter = {};
 
 	data.forEach((urlElement) => {
 		urlElement.forEach((el) => {
 			if (moment(el[keyName], "YYYY-MM-DD", true).isValid()) {
-				if (el[keyName].substring(0, 4) !== keyValue) return;
-			} else if (el[keyName] !== keyValue) return;
+				if (el[keyName].substring(0, 4) !== expectedValue) return;
+			} else if (el[keyName] !== expectedValue) return;
 			if (politicianCounter[el[politicianKeyName]] === undefined) {
 				politicianCounter[el[politicianKeyName]] = 0;
 			}
@@ -21,8 +21,8 @@ const getPoliticianWithMostSpeechesByKey = (data, keyName: string, keyValue: str
 		});
 	});
 
-	const highestVal = Math.max(...Object.values(politicianCounter));
-	const result = Object.keys(politicianCounter).filter(key => politicianCounter[key] === highestVal);
+	const highestValue = Math.max(...Object.values(politicianCounter));
+	const result = Object.keys(politicianCounter).filter(key => politicianCounter[key] === highestValue);
 
 	if (result.length !== 1) return null;
 	return result[0];
@@ -39,8 +39,8 @@ const getPoliticianWithLowestKeyValue = (data, keyName: string): string | null =
 		});
 	});
 
-	const lowestVal = Math.min(...Object.values(politicianCounter));
-	const result = Object.keys(politicianCounter).filter(key => politicianCounter[key] === lowestVal);
+	const lowestValue = Math.min(...Object.values(politicianCounter));
+	const result = Object.keys(politicianCounter).filter(key => politicianCounter[key] === lowestValue);
 
 	if (result.length !== 1) return null;
 	return result[0];
