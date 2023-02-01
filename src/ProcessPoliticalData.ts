@@ -42,7 +42,7 @@ const getPoliticianWithLowestKeyValue = (data, keyName: string): string | null =
 	const lowestVal = Math.min(...Object.values(politicianCounter));
 	const result = Object.keys(politicianCounter).filter(key => politicianCounter[key] === lowestVal);
 
-	if (result.length > 1) return null;
+	if (result.length !== 1) return null;
 	return result[0];
 };
 
